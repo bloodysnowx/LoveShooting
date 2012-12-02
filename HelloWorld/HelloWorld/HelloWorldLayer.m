@@ -40,19 +40,27 @@
 	// always call "super" init
 	// Apple recommends to re-assign "self" with the "super's" return value
 	if( (self=[super init]) ) {
+        CGSize winSize = [[CCDirector sharedDirector] winSize];
+        CCLabelTTF * label = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"W:%.2f, H:%.2f", winSize.width, winSize.height] fontName:@"Marker Felt" fontSize:40];
+        
+        label.position = CGPointMake(winSize.width / 2, winSize.height / 2);
+        [self addChild: label];
 		
+        /*
 		// create and initialize a Label
 		CCLabelTTF *label = [CCLabelTTF labelWithString:@"Hello World" fontName:@"Marker Felt" fontSize:64];
+         */
 
 		// ask director for the window size
 		CGSize size = [[CCDirector sharedDirector] winSize];
 	
+        /*
 		// position the label on the center of the screen
 		label.position =  ccp( size.width /2 , size.height/2 );
 		
 		// add the label as a child to this Layer
 		[self addChild: label];
-		
+		*/
 		
 		
 		//

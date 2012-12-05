@@ -133,6 +133,8 @@
 		0D17BE11166B9F910053AC3A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D17BE10166B9F910053AC3A /* AppDelegate.m */; };
 		0D17BE14166B9F910053AC3A /* HelloWorldLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D17BE13166B9F910053AC3A /* HelloWorldLayer.m */; };
 		0D17BE17166B9F910053AC3A /* IntroLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D17BE16166B9F910053AC3A /* IntroLayer.m */; };
+		0D17BE1F166F918F0053AC3A /* ImageScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D17BE1E166F918F0053AC3A /* ImageScene.m */; };
+		0D17BE21166F955D0053AC3A /* Louise.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0D17BE20166F955D0053AC3A /* Louise.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -398,6 +400,9 @@
 		0D17BE13166B9F910053AC3A /* HelloWorldLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HelloWorldLayer.m; sourceTree = "<group>"; };
 		0D17BE15166B9F910053AC3A /* IntroLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IntroLayer.h; sourceTree = "<group>"; };
 		0D17BE16166B9F910053AC3A /* IntroLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IntroLayer.m; sourceTree = "<group>"; };
+		0D17BE1D166F918F0053AC3A /* ImageScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageScene.h; sourceTree = "<group>"; };
+		0D17BE1E166F918F0053AC3A /* ImageScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageScene.m; sourceTree = "<group>"; };
+		0D17BE20166F955D0053AC3A /* Louise.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Louise.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -465,6 +470,8 @@
 				0D17BC98166B9F8E0053AC3A /* Resources */,
 				0D17BCB2166B9F8E0053AC3A /* libs */,
 				0D17BE0B166B9F910053AC3A /* Supporting Files */,
+				0D17BE1D166F918F0053AC3A /* ImageScene.h */,
+				0D17BE1E166F918F0053AC3A /* ImageScene.m */,
 			);
 			path = HelloWorld;
 			sourceTree = "<group>";
@@ -472,6 +479,7 @@
 		0D17BC98166B9F8E0053AC3A /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				0D17BE20166F955D0053AC3A /* Louise.jpg */,
 				0D17BC99166B9F8E0053AC3A /* Default.png */,
 				0D17BC9B166B9F8E0053AC3A /* Default-Landscape~ipad.png */,
 				0D17BC9D166B9F8E0053AC3A /* fps_images.png */,
@@ -895,6 +903,7 @@
 				0D17BCAE166B9F8E0053AC3A /* Icon@2x.png in Resources */,
 				0D17BCB1166B9F8E0053AC3A /* iTunesArtwork in Resources */,
 				0D17BDEF166B9F910053AC3A /* ChangeLog in Resources */,
+				0D17BE21166F955D0053AC3A /* Louise.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1009,6 +1018,7 @@
 				0D17BE11166B9F910053AC3A /* AppDelegate.m in Sources */,
 				0D17BE14166B9F910053AC3A /* HelloWorldLayer.m in Sources */,
 				0D17BE17166B9F910053AC3A /* IntroLayer.m in Sources */,
+				0D17BE1F166F918F0053AC3A /* ImageScene.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

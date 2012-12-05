@@ -9,6 +9,7 @@
 
 // Import the interfaces
 #import "HelloWorldLayer.h"
+#import "ImageScene.h"
 
 // Needed to obtain the Navigation Controller
 #import "AppDelegate.h"
@@ -45,23 +46,9 @@
         
         label.position = CGPointMake(winSize.width / 2, winSize.height / 2);
         [self addChild: label];
-		
-        /*
-		// create and initialize a Label
-		CCLabelTTF *label = [CCLabelTTF labelWithString:@"Hello World" fontName:@"Marker Felt" fontSize:64];
-         */
 
 		// ask director for the window size
 		CGSize size = [[CCDirector sharedDirector] winSize];
-	
-        /*
-		// position the label on the center of the screen
-		label.position =  ccp( size.width /2 , size.height/2 );
-		
-		// add the label as a child to this Layer
-		[self addChild: label];
-		*/
-		
 		
 		//
 		// Leaderboards and Achievements
@@ -99,8 +86,12 @@
 			[leaderboardViewController release];
 		}
 									   ];
-		
-		CCMenu *menu = [CCMenu menuWithItems:itemAchievement, itemLeaderboard, nil];
+
+        CCMenuItemFont * item = [CCMenuItemFont itemWithString:@"To imageScene" block:^(id sender) {
+                [[CCDirector sharedDirector] replaceScene:[ImageScene scene]];
+            }];
+
+		CCMenu *menu = [CCMenu menuWithItems:itemAchievement, itemLeaderboard, item, nil];
 		
 		[menu alignItemsHorizontallyWithPadding:20];
 		[menu setPosition:ccp( size.width/2, size.height/2 - 50)];

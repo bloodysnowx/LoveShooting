@@ -42,7 +42,7 @@
 		CGSize winSize = [[CCDirector sharedDirector] winSize];
 		CCLabelTTF* label = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"W:%.2f, H:%.2f", winSize.width, winSize.height] fontName:@"Marker Felt" fontSize:40];
 
-		label.position = CGPointMake(winSize.width / 2, winSize.height / 2);
+		label.position = CGPointMake(winSize.width / 2, winSize.height * 3 / 4);
 		[self addChild:label];
 
 		// ask director for the window size
@@ -90,14 +90,25 @@
 		                            [[CCDirector sharedDirector] replaceScene:tiles];
 		                            // [[CCDirector sharedDirector] replaceScene:[ImageScene scene]];
 								}];
+        
+        NSArray* toggleMenuItems = [NSArray arrayWithObjects:[CCMenuItemFont itemWithString:@"ON"], [CCMenuItemFont itemWithString:@"OFF"], nil];
+        CCMenuItemToggle* itemToggle = [CCMenuItemToggle itemWithItems:toggleMenuItems block:^(id sender) {
+            CCLOG(@"toggle");
+        }];
 
-		CCMenu* menu = [CCMenu menuWithItems:itemAchievement, itemLeaderboard, item, nil];
+		CCMenu* menu = [CCMenu menuWithItems:itemAchievement, itemLeaderboard, item, itemToggle, nil];
 
-		[menu alignItemsHorizontallyWithPadding:20];
+		// [menu alignItemsHorizontallyWithPadding:20];
+        [menu alignItemsVerticallyWithPadding:10];
 		[menu setPosition:ccp(size.width / 2, size.height / 2 - 50)];
 
 		// Add the menu to the layer
 		[self addChild:menu];
+        
+        CCSprite* sampleSprite = [CCSprite spriteWithFile:@"Icon@2x.png"];
+        sampleSprite.anchorPoint = CGPointMake(0, 0);
+        sampleSprite.position = CGPointMake(0, 0);
+        [self addChild:sampleSprite];
 	}
 	return self;
 }

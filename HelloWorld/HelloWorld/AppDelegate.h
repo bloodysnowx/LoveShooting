@@ -1,9 +1,9 @@
 //
-//  AppDelegate.h
-//  HelloWorld
+// AppDelegate.h
+// HelloWorld
 //
-//  Created by Atsushi Iwasa on 2012/12/02.
-//  Copyright __MyCompanyName__ 2012年. All rights reserved.
+// Created by Atsushi Iwasa on 2012/12/02.
+// Copyright __MyCompanyName__ 2012年. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -11,14 +11,15 @@
 
 @interface AppController : NSObject <UIApplicationDelegate, CCDirectorDelegate>
 {
-	UIWindow *window_;
-	UINavigationController *navController_;
+	UIWindow* window_;
+	UINavigationController* navController_;
 
-	CCDirectorIOS	*director_;							// weak ref
+	/* weak ref */
+	CCDirectorIOS* director_;
 }
 
-@property (nonatomic, retain) UIWindow *window;
-@property (readonly) UINavigationController *navController;
-@property (readonly) CCDirectorIOS *director;
+@property (nonatomic, retain) UIWindow* window;
+@property (readonly) UINavigationController* navController;
+@property (readonly) CCDirectorIOS* director;
 
 @end

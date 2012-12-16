@@ -1,9 +1,9 @@
 //
-//  AppDelegate.m
-//  HelloWorld
+// AppDelegate.m
+// HelloWorld
 //
-//  Created by Atsushi Iwasa on 2012/12/02.
-//  Copyright __MyCompanyName__ 2012年. All rights reserved.
+// Created by Atsushi Iwasa on 2012/12/02.
+// Copyright __MyCompanyName__ 2012年. All rights reserved.
 //
 
 #import "cocos2d.h"
@@ -13,24 +13,22 @@
 
 @implementation AppController
 
-@synthesize window=window_, navController=navController_, director=director_;
+@synthesize window = window_, navController = navController_, director = director_;
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
+- (BOOL)application:(UIApplication*)application didFinishLaunchingWithOptions:(NSDictionary*)launchOptions {
 	// Create the main window
 	window_ = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 
 
 	// Create an CCGLView with a RGB565 color buffer, and a depth buffer of 0-bits
-	CCGLView *glView = [CCGLView viewWithFrame:[window_ bounds]
-								   pixelFormat:kEAGLColorFormatRGB565	//kEAGLColorFormatRGBA8
-								   depthFormat:0	//GL_DEPTH_COMPONENT24_OES
-							preserveBackbuffer:NO
-									sharegroup:nil
-								 multiSampling:NO
-							   numberOfSamples:0];
+	CCGLView* glView = [CCGLView viewWithFrame:[window_ bounds] pixelFormat:kEAGLColorFormatRGB565 // kEAGLColorFormatRGBA8
+	                    depthFormat:0 // GL_DEPTH_COMPONENT24_OES
+	                    preserveBackbuffer:NO
+	                    sharegroup:nil
+	                    multiSampling:NO
+	                    numberOfSamples:0];
 
-	director_ = (CCDirectorIOS*) [CCDirector sharedDirector];
+	director_ = (CCDirectorIOS*)[CCDirector sharedDirector];
 
 	director_.wantsFullScreenLayout = YES;
 
@@ -38,7 +36,7 @@
 	[director_ setDisplayStats:YES];
 
 	// set FPS at 60
-	[director_ setAnimationInterval:1.0/60];
+	[director_ setAnimationInterval:1.0 / 60];
 
 	// attach the openglView to the director
 	[director_ setView:glView];
@@ -48,10 +46,10 @@
 
 	// 2D projection
 	[director_ setProjection:kCCDirectorProjection2D];
-//	[director setProjection:kCCDirectorProjection3D];
+    // [director setProjection:kCCDirectorProjection3D];
 
 	// Enables High Res mode (Retina Display) on iPhone 4 and maintains low res on all other devices
-	if( ! [director_ enableRetinaDisplay:YES] )
+	if(![director_ enableRetinaDisplay:YES])
 		CCLOG(@"Retina Display Not supported");
 
 	// Default texture format for PNG/BMP/TIFF/JPEG/GIF images
@@ -63,90 +61,81 @@
 	// On iPad HD  : "-ipadhd", "-ipad",  "-hd"
 	// On iPad     : "-ipad", "-hd"
 	// On iPhone HD: "-hd"
-	CCFileUtils *sharedFileUtils = [CCFileUtils sharedFileUtils];
-	[sharedFileUtils setEnableFallbackSuffixes:NO];				// Default: NO. No fallback suffixes are going to be used
-	[sharedFileUtils setiPhoneRetinaDisplaySuffix:@"-hd"];		// Default on iPhone RetinaDisplay is "-hd"
-	[sharedFileUtils setiPadSuffix:@"-ipad"];					// Default on iPad is "ipad"
-	[sharedFileUtils setiPadRetinaDisplaySuffix:@"-ipadhd"];	// Default on iPad RetinaDisplay is "-ipadhd"
+	CCFileUtils* sharedFileUtils = [CCFileUtils sharedFileUtils];
+	[sharedFileUtils setEnableFallbackSuffixes:NO];                                                                                                                                             // Default: NO. No fallback suffixes are going to be used
+	[sharedFileUtils setiPhoneRetinaDisplaySuffix:@"-hd"];                                                                                                                                      // Default on iPhone RetinaDisplay is "-hd"
+	[sharedFileUtils setiPadSuffix:@"-ipad"];                                                                                                                                                   // Default on iPad is "ipad"
+	[sharedFileUtils setiPadRetinaDisplaySuffix:@"-ipadhd"];                                                                                                                                    // Default on iPad RetinaDisplay is "-ipadhd"
 
 	// Assume that PVR images have premultiplied alpha
 	[CCTexture2D PVRImagesHavePremultipliedAlpha:YES];
 
 	// and add the scene to the stack. The director will run it when it automatically when the view is displayed.
-	[director_ pushScene: [IntroLayer scene]]; 
+	[director_ pushScene:[IntroLayer scene]];
 
-	
+
 	// Create a Navigation Controller with the Director
 	navController_ = [[UINavigationController alloc] initWithRootViewController:director_];
 	navController_.navigationBarHidden = YES;
-	
+
 	// set the Navigation Controller as the root view controller
-//	[window_ addSubview:navController_.view];	// Generates flicker.
+    // [window_ addSubview:navController_.view]; // Generates flicker.
 	[window_ setRootViewController:navController_];
-	
+
 	// make main window visible
 	[window_ makeKeyAndVisible];
-	
+
 	return YES;
 }
 
 // Supported orientations: Landscape. Customize it for your own needs
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
 	return UIInterfaceOrientationIsLandscape(interfaceOrientation);
 }
 
-
 // getting a call, pause the game
--(void) applicationWillResignActive:(UIApplication *)application
-{
-	if( [navController_ visibleViewController] == director_ )
+- (void)applicationWillResignActive:(UIApplication*)application {
+	if([navController_ visibleViewController] == director_)
 		[director_ pause];
 }
 
 // call got rejected
--(void) applicationDidBecomeActive:(UIApplication *)application
-{
-	if( [navController_ visibleViewController] == director_ )
+- (void)applicationDidBecomeActive:(UIApplication*)application {
+	if([navController_ visibleViewController] == director_)
 		[director_ resume];
 }
 
--(void) applicationDidEnterBackground:(UIApplication*)application
-{
-	if( [navController_ visibleViewController] == director_ )
+- (void)applicationDidEnterBackground:(UIApplication*)application {
+	if([navController_ visibleViewController] == director_)
 		[director_ stopAnimation];
 }
 
--(void) applicationWillEnterForeground:(UIApplication*)application
-{
-	if( [navController_ visibleViewController] == director_ )
+- (void)applicationWillEnterForeground:(UIApplication*)application {
+	if([navController_ visibleViewController] == director_)
 		[director_ startAnimation];
 }
 
 // application will be killed
-- (void)applicationWillTerminate:(UIApplication *)application
-{
+- (void)applicationWillTerminate:(UIApplication*)application {
 	CC_DIRECTOR_END();
 }
 
 // purge memory
-- (void)applicationDidReceiveMemoryWarning:(UIApplication *)application
-{
+- (void)applicationDidReceiveMemoryWarning:(UIApplication*)application {
 	[[CCDirector sharedDirector] purgeCachedData];
 }
 
 // next delta time will be zero
--(void) applicationSignificantTimeChange:(UIApplication *)application
-{
+- (void)applicationSignificantTimeChange:(UIApplication*)application {
 	[[CCDirector sharedDirector] setNextDeltaTimeZero:YES];
 }
 
-- (void) dealloc
-{
+- (void)dealloc {
 	[window_ release];
 	[navController_ release];
 
 	[super dealloc];
 }
+
 @end
 

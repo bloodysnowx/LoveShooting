@@ -1,9 +1,9 @@
 //
-//  IntroLayer.h
-//  HelloWorld
+// IntroLayer.h
+// HelloWorld
 //
-//  Created by Atsushi Iwasa on 2012/12/02.
-//  Copyright __MyCompanyName__ 2012年. All rights reserved.
+// Created by Atsushi Iwasa on 2012/12/02.
+// Copyright __MyCompanyName__ 2012年. All rights reserved.
 //
 
 
@@ -16,6 +16,6 @@
 }
 
 // returns a CCScene that contains the HelloWorldLayer as the only child
-+(CCScene *) scene;
++ (CCScene*)scene;
 
 @end
